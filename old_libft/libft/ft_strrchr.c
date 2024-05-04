@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:26:00 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 15:59:09 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 22:17:10 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	i = 0;
 	if ((char)c == 0)
 	{
-		while (s[i] != 0)
+		while (s[i] != '\0')
 			i++;
 		return ((char *)&s[i]);
 	}
-	while (s[i])
+	while (s[i] != '\0')
 		i++;
 	while (i >= 0)
 	{

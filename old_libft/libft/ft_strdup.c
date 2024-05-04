@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:17:24 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 15:50:39 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 21:47:03 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ char	*ft_strdup(const char *s1)
 	char	*s2;
 	int		i;
 
-	s2 = malloc((ft_strlen(s1) + 1));
-	i = 0;
+	s2 = malloc(ft_strlen(s1) + 1);
+	i = -1;
 	if (s2 == NULL)
 		return (s2);
-	while (s1[i])
-	{
+	while (s1[++i] != '\0')
 		s2[i] = s1[i];
-		i++;
-	}
-	s2[i] = 0;
+	s2[i] = '\0';
 	return (s2);
 }

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 07:35:42 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 15:36:49 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 21:33:12 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memset(void *b, int c, size_t len)
 	size_t	i;
 
 	a = b;
-	i = 0;
-	while (i < len)
-		a[i++] = c;
+	i = -1;
+	while (++i < len)
+		a[i] = c;
 	return (b);
 }

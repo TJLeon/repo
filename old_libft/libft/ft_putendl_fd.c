@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 01:10:23 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 15:41:00 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 21:34:00 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (s == NULL)
 		return ;
-	while (s[i])
-		write(fd, &s[i++], 1);
+	while (s[++i] != '\0')
+		write(fd, &s[i], 1);
 	write(fd, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:14:52 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:34:39 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/01 14:07:34 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ char	*ft_strtrim(char const *str, char const *set)
 	int		end;
 	int		i;
 
-	if (!str || !set)
+	if (str == NULL || set == NULL)
 		return (NULL);
 	start = 0;
-	end = ft_strlen(str) - 1;
+	end = (ft_strlen(str)) - 1;
 	while (ft_charmatch(str[start], set))
 		start++;
 	while (ft_charmatch(str[end], set) && end > start)

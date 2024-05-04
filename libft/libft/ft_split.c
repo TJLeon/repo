@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:01:41 by leotan            #+#    #+#             */
-/*   Updated: 2024/03/15 13:02:10 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 23:22:05 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_word(char const *s, char c)
 	i = 0;
 	w = 0;
 	t = 0;
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		if (s[i] == c)
 			t = 0;
@@ -44,7 +44,7 @@ static void	count_letter(char const *s, char c, char **arr)
 	i = 0;
 	l = 0;
 	w = 0;
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		if (s[i] == c)
 			l = 0;
@@ -52,7 +52,7 @@ static void	count_letter(char const *s, char c, char **arr)
 			l++;
 		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == 0))
 		{
-			arr[w] = ft_calloc(l + 1, sizeof(char));
+			arr[w] = ft_calloc(l + 1, 1);
 			w++;
 		}
 		i++;
@@ -67,16 +67,16 @@ char	**ft_split(char const *s, char c)
 	int		l;
 	int		w;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
 	arr = malloc((count_word(s, c) + 1) * sizeof(char *));
-	if (!arr)
-		return (NULL);
+	if (arr == NULL)
+		return (arr);
 	i = 0;
 	l = 0;
 	w = 0;
 	count_letter(s, c, arr);
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		if (s[i] == c)
 			l = 0;

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 21:25:57 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 15:23:57 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 00:33:31 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	const char	*str1;
 	const char	*str2;
 
-	i = 0;
+	i = -1;
 	str1 = s1;
 	str2 = s2;
-	while (i < n)
-	{
+	while (++i < n)
 		if (str1[i] != str2[i])
 			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
-		i++;
-	}
 	return (0);
 }

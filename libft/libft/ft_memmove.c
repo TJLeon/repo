@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:09:47 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:33:56 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 23:16:30 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	d = dst;
 	s = src;
 	i = -1;
-	if (dst == 0 && src == 0)
+	if (dst == NULL && src == NULL)
 		return (NULL);
 	while (++i < len)
 	{

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:14:52 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 16:02:47 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 13:46:22 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ static int	ft_charmatch(char c, char const *set)
 {
 	int	i;
 
-	i = 0;
-	while (set[i])
-	{
+	i = -1;
+	while (set[++i] != '\0')
 		if (c == set[i])
 			return (1);
-		i++;
-	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 21:00:28 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/29 16:03:28 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:47:45 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,17 @@ char	*ft_substr(char const *s1, unsigned int x, size_t len)
 
 	i = 0;
 	if (s1 == NULL)
-		return (0);
+		return (NULL);
 	if (x >= ft_strlen(s1))
-	{
-		s2 = ft_calloc(i + 1, 1);
-		return (s2);
-	}
-	while (s1[x + i] && i < len)
+		return (ft_calloc(1, 1));
+	while (s1[x + i] != '\0' && i < len)
 		i++;
 	s2 = ft_calloc(i + 1, 1);
-	if (s2 == NULL || !len)
+	if (s2 == NULL || len == 0)
 		return (s2);
-	i = 0;
-	while (s1[x + i] && i < len)
-	{
+	i = -1;
+	while (s1[x + ++i] != '\0' && i < len)
 		s2[i] = s1[x + i];
-		i++;
-	}
-	s2[i] = 0;
+	s2[i] = '\0';
 	return (s2);
 }

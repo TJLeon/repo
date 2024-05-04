@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:49:37 by leotan            #+#    #+#             */
-/*   Updated: 2024/04/13 16:39:21 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:05:49 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*a;
 	size_t	i;
 
-	a = s;
 	i = 0;
 	while (i < n)
-		a[i++] = 0;
+		((char *)s)[i++] = '\0';
 }
