@@ -6,25 +6,24 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 22:12:49 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:34:34 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 00:36:52 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 	int		x;
 
-	i = 0;
+	i = -1;
 	x = 0;
-	if (n == 0 && (!s1 || !s2))
+	if (n == 0 && (s1 == NULL || s2 == NULL))
 		return (NULL);
 	if (s2[x] == '\0')
 		return ((char *)s1);
-	while (s1[i] && i < n)
+	while (s1[++i] != '\0' && i < n)
 	{
 		if (s1[i] == s2[x])
 		{
@@ -32,10 +31,8 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 				x++;
 			if (s2[x] == '\0')
 				return ((char *)&s1[i]);
-			else
-				x = 0;
+			x = 0;
 		}
-		i++;
 	}
 	return (NULL);
 }

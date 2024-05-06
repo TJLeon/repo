@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:01:41 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 23:22:05 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:24:58 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	count_word(char const *s, char c)
 	int	w;
 	int	t;
 
-	i = 0;
+	i = -1;
 	w = 0;
 	t = 0;
-	while (s[i] != '\0')
+	while (s[++i] != '\0')
 	{
 		if (s[i] == c)
 			t = 0;
@@ -30,7 +30,6 @@ static int	count_word(char const *s, char c)
 			w++;
 			t = 1;
 		}
-		i++;
 	}
 	return (w);
 }
@@ -41,23 +40,21 @@ static void	count_letter(char const *s, char c, char **arr)
 	int	l;
 	int	w;
 
-	i = 0;
+	i = -1;
 	l = 0;
 	w = 0;
-	while (s[i] != '\0')
+	while (s[++i] != '\0')
 	{
 		if (s[i] == c)
 			l = 0;
 		else
 			l++;
-		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == 0))
+		if ((s[i] != c && s[i + 1] == c) || (s[i] != c && s[i + 1] == '\0'))
 		{
 			arr[w] = ft_calloc(l + 1, 1);
 			w++;
 		}
-		i++;
 	}
-	arr[w] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
@@ -69,14 +66,14 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	arr = malloc((count_word(s, c) + 1) * sizeof(char *));
+	arr = ft_calloc((count_word(s, c) + 1), sizeof(char *));
 	if (arr == NULL)
-		return (arr);
-	i = 0;
+		return (NULL);
+	i = -1;
 	l = 0;
 	w = 0;
 	count_letter(s, c, arr);
-	while (s[i] != '\0')
+	while (s[++i] != '\0')
 	{
 		if (s[i] == c)
 			l = 0;
@@ -84,7 +81,6 @@ char	**ft_split(char const *s, char c)
 			arr[w][l++] = s[i];
 		if (s[i] != c && s[i + 1] == c)
 			w++;
-		i++;
 	}
 	return (arr);
 }

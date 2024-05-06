@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 21:41:56 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:34:20 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:20:02 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,20 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ptr;
+	char	*p;
 	int		i;
 	int		x;
 
-	if (!s1 || !s2)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	ptr = malloc((sizeof(char)) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!ptr)
+	p = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, 1);
+	if (p == NULL)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	x = 0;
-	while (s2[x])
-	{
-		ptr[i + x] = s2[x];
-		x++;
-	}
-	ptr[i + x] = 0;
-	return (ptr);
+	i = -1;
+	while (s1[++i] != '\0')
+		p[i] = s1[i];
+	x = -1;
+	while (s2[++x] != '\0')
+		p[i + x] = s2[x];
+	return (p);
 }

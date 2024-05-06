@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:52:07 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 23:14:50 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:58:19 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_itoa(int n)
 	}
 	while (nbr > 9)
 	{
-		ptr[len-- - 1] = nbr % 10 + 48;
+		ptr[len-- - 1] = (nbr % 10) + 48;
 		nbr = nbr / 10;
 	}
 	ptr[len - 1] = nbr + 48;

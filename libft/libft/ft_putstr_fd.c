@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 01:03:36 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 23:20:20 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/03 21:34:58 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (s == NULL)
 		return ;
-	while (s[i] != '\0')
-		write(fd, &s[i++], 1);
+	while (s[++i] != '\0')
+		write(fd, &s[i], 1);
 }

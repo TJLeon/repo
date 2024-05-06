@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:14:52 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/01 14:07:34 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:22:23 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,16 @@ static int	ft_charmatch(char c, char const *set)
 {
 	int	i;
 
-	i = 0;
-	while (set[i])
-	{
+	i = -1;
+	while (set[++i] != '\0')
 		if (c == set[i])
 			return (1);
-		i++;
-	}
 	return (0);
 }
 
 char	*ft_strtrim(char const *str, char const *set)
 {
-	char	*ptr;
+	char	*p;
 	int		start;
 	int		end;
 	int		i;
@@ -36,16 +33,16 @@ char	*ft_strtrim(char const *str, char const *set)
 	if (str == NULL || set == NULL)
 		return (NULL);
 	start = 0;
-	end = (ft_strlen(str)) - 1;
+	end = ft_strlen(str) - 1;
 	while (ft_charmatch(str[start], set))
 		start++;
 	while (ft_charmatch(str[end], set) && end > start)
 		end--;
-	ptr = ft_calloc(end - start + 2, sizeof(char));
-	if (!ptr)
+	p = ft_calloc(end - start + 2, 1);
+	if (p == NULL)
 		return (NULL);
 	i = 0;
 	while (start <= end)
-		ptr[i++] = str[start++];
-	return (ptr);
+		p[i++] = str[start++];
+	return (p);
 }

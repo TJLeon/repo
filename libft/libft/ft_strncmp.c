@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:28:46 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:34:30 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 00:35:52 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	if (n != 0)
 		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	else
-		return (0);
+	return (0);
 }

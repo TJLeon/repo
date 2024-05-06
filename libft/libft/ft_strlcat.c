@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 23:42:55 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:34:22 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/04 00:34:45 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	while (dst != NULL && dst[i] != '\0' && i < dstsize)
 		i++;
-	x = 0;
-	while (src[x] != '\0')
+	x = -1;
+	while (src[++x] != '\0')
 	{
 		if ((x + i + 1) < dstsize)
 			dst[i + x] = src[x];
 		else if (dstsize != 0 && i + x < dstsize)
 			dst[i + x] = '\0';
-		x++;
 	}
 	if (dstsize != 0 && i + x < dstsize)
 		dst[i + x] = '\0';

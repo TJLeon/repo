@@ -6,20 +6,18 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 07:35:42 by leotan            #+#    #+#             */
-/*   Updated: 2024/02/17 18:33:59 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:06:49 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *p, int c, size_t len)
 {
-	char	*a;
 	size_t	i;
 
-	a = b;
-	i = 0;
-	while (i < len)
-		a[i++] = c;
-	return (b);
+	i = -1;
+	while (++i < len)
+		((char *)p)[i] = (char)c;
+	return (p);
 }
