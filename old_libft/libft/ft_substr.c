@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 21:00:28 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 19:47:45 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:18:26 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ char	*ft_substr(char const *s1, unsigned int x, size_t len)
 	i = -1;
 	while (s1[x + ++i] != '\0' && i < len)
 		s2[i] = s1[x + i];
-	s2[i] = '\0';
 	return (s2);
 }

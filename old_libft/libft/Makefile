@@ -1,6 +1,6 @@
 COMPILER	= cc
 
-FLAGS		= -Wall -Wextra -Werror
+FLAG		= -Wall -Wextra -Werror
 
 NAME		= libft.a
 
@@ -42,7 +42,7 @@ SRC			= ft_isalpha.c \
 OBJ			= $(SRC:.c=.o)
 
 $(NAME):
-		$(COMPILER) $(FLAGS) -c $(SRC) -I./
+		$(COMPILER) $(FLAG) -c $(SRC) -I./
 		ar -rcs $(NAME) $(OBJ)
 
 all: $(NAME)

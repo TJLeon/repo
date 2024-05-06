@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:01:41 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 21:44:29 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:24:58 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	count_letter(char const *s, char c, char **arr)
 			w++;
 		}
 	}
-	arr[w] = NULL;
 }
 
 char	**ft_split(char const *s, char c)
@@ -67,7 +66,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	arr = malloc((count_word(s, c) + 1) * sizeof(char *));
+	arr = ft_calloc((count_word(s, c) + 1), sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 21:52:07 by leotan            #+#    #+#             */
-/*   Updated: 2024/05/03 21:29:35 by leotan           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:58:19 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_itoa(int n)
 	len = count_digit(n);
 	ptr = ft_calloc(len + 1, 1);
 	if (ptr == NULL)
-		return (NULL);
+		return (ptr);
 	nbr = n;
 	if (n < 0)
 	{
