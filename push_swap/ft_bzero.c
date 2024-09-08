@@ -6,17 +6,17 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:22:03 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/02 16:22:17 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/05 20:37:38 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *ptr, size_t size)
 {
-	size_t	i;
+	size_t	index;
 
-	i = -1;
-	while (++i < n)
-		((char *)s)[i] = '\0';
+	index = -1;
+	while (++index < size)
+		((char *)ptr)[index] = '\0';
 }

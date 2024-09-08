@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:10:46 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/02 16:41:43 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/08 15:57:46 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,30 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
-typedef struct s_linkedlist
+typedef struct s_node
 {
-	int					data;
-	struct s_linkedlist	*next;
-	struct s_linkedlist	*prev;
-	int					status;
+	int				data;
+	struct s_node	*next;
+	struct s_node	*prev;
+	int				status;
 }	t_stack;
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t n, size_t t);
-void	*ft_free_2d_arr(char **s);
-char	**ft_split(char **argv);
-void	*ft_free_list(t_stack **p);
-t_stack	*ft_list_add_num(t_stack *p, long long n, char **s);
-t_stack	*ft_atoi(char **s);
+void	*ft_free_ptr(void **ptr);
+void	*ft_free_list(t_stack *ptr);
+void	ft_kill_switch(void **p1, t_stack *p2);
+void	ft_bzero(void *ptr, size_t size);
+void	*ft_calloc(size_t size, size_t byte);
+char	**ft_parse_input(char **argv);
+t_stack	*ft_list_add_num(t_stack *ptr, long num, char **str);
+t_stack	*ft_list_dupe(t_stack *ptr);
+t_stack	*ft_str_to_list(char **str);
+t_stack	*ft_list_to_index(t_stack *ptr);
+int		ft_sort_check(t_stack *ptr);
+t_stack	*ft_find_tail(t_stack *s);
+void	ft_stack_push(t_stack **from, t_stack **to, char s);
+void	ft_stack_rot(t_stack **stack, char s);
+void	ft_radix_sort(t_stack **stack_a);
 
 #endif

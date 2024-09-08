@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_parse_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:19:57 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/02 16:33:57 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/08 15:59:13 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,95 +14,93 @@
 
 static int	ft_count_word(char **argv)
 {
-	unsigned long long	i;
-	unsigned long long	x;
-	unsigned long long	w;
-	int					t;
+	int	i1;
+	int	i2;
+	int	word;
+	int	pause;
 
-	i = 0;
-	w = 0;
-	while (argv[++i] != NULL)
+	i1 = 0;
+	word = 0;
+	while (argv[++i1] != NULL)
 	{
-		t = 0;
-		x = -1;
-		while (argv[i][++x] != '\0')
+		pause = 0;
+		i2 = -1;
+		while (argv[i1][++i2] != '\0')
 		{
-			if (argv[i][x] == ' ')
-				t = 0;
-			else if (t == 0)
+			if (argv[i1][i2] == ' ')
+				pause = 0;
+			else if (pause == 0)
 			{
-				w++;
-				t = 1;
+				word++;
+				pause = 1;
 			}
 		}
 	}
-	return (w);
+	return (word);
 }
 
-static void	ft_count_letter(char **v, char **arr)
+static void	ft_count_letter(char **v, char **ptr)
 {
-	unsigned long long	i;
-	unsigned long long	l;
-	unsigned long long	w;
-	unsigned long long	x;
+	int	i;
+	int	letter;
+	int	word;
+	int	x;
 
 	i = 0;
-	w = -1;
+	word = -1;
 	while (v[++i] != NULL)
 	{
 		x = -1;
-		l = 0;
-		while (v[i][++x])
+		letter = 0;
+		while (v[i][++x] != '\0')
 		{
 			if (v[i][x] == ' ')
-				l = 0;
+				letter = 0;
 			else
-				l++;
+				letter++;
 			if (v[i][x] != ' ' && (v[i][x + 1] == ' ' || v[i][x + 1] == '\0'))
 			{
-				arr[++w] = ft_calloc(l + 1, 1);
-				if (arr[w] == NULL)
-					exit((ft_free_2d_arr(arr), write(2, "Error\n", 6)));
+				ptr[++word] = ft_calloc(letter + 1, 1);
+				if (ptr[word] == NULL)
+					ft_kill_switch((void **)ptr, NULL);
 			}
 		}
 	}
 }
 
-static void	ft_fill_arr(char **v, char **arr)
+static void	ft_filter(char **v, char **ptr)
 {
-	unsigned long long	i;
-	unsigned long long	x;
-	unsigned long long	l;
-	unsigned long long	w;
+	int	i;
+	int	x;
+	int	letter;
+	int	word;
 
 	i = 0;
-	w = 0;
+	word = 0;
 	while (v[++i] != NULL)
 	{
-		l = 0;
+		letter = 0;
 		x = -1;
 		while (v[i][++x] != '\0')
 		{
 			if (v[i][x] == ' ')
-				l = 0;
+				letter = 0;
 			else
-				arr[w][l++] = v[i][x];
+				ptr[word][letter++] = v[i][x];
 			if (v[i][x] != ' ' && (v[i][x + 1] == ' ' || v[i][x + 1] == '\0'))
-				w++;
+				word++;
 		}
 	}
 }
 
-char	**ft_split(char **argv)
+char	**ft_parse_input(char **argv)
 {
-	char	**arr;
+	char	**ptr;
 
-	if (argv == NULL)
-		return (NULL);
-	arr = ft_calloc(ft_count_word(argv) + 1, sizeof(char *));
-	if (arr == NULL)
-		return (NULL);
-	ft_count_letter(argv, arr);
-	ft_fill_arr(argv, arr);
-	return (arr);
+	ptr = ft_calloc(ft_count_word(argv) + 1, sizeof(char *));
+	if (ptr == NULL)
+		ft_kill_switch(NULL, NULL);
+	ft_count_letter(argv, ptr);
+	ft_filter(argv, ptr);
+	return (ptr);
 }

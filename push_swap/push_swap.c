@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:25:15 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/04 09:36:45 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/08 17:45:36 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,58 @@
 
 static char	**ft_blank_input(char **argv)
 {
-	unsigned long long	i;
-	unsigned long long	x;
+	int	i1;
+	int	i2;
 
-	i = 0;
-	while (argv[++i] != NULL)
+	if (argv == NULL)
+		ft_kill_switch(NULL, NULL);
+	i1 = 0;
+	while (argv[++i1] != NULL)
 	{
-		x = 0;
-		while (argv[i][x] != '\0' && argv[i][x] == ' ')
-			++x;
-		if (argv[i][x] == '\0')
-			return (NULL);
+		i2 = 0;
+		while (argv[i1][i2] != '\0' && argv[i1][i2] == ' ')
+			++i2;
+		if (argv[i1][i2] == '\0')
+			ft_kill_switch(NULL, NULL);
 	}
 	return (argv);
 }
 
-static void	ft_hardcode_for_3(t_stack *ptr)
+static void	ft_sort_3_num(t_stack *ptr)
 {
+	if (ptr == NULL)
+		return ;
 	if (ptr->data > ptr->next->data && ptr->data < ptr->prev->data)
-		return ((void)write(1, "sa\n", 3));
+		return ((void)write(STDOUT_FILENO, "sa\n", 3));
 	if (ptr->data > ptr->next->data && ptr->data > ptr->prev->data)
 	{
 		if (ptr->next->data > ptr->prev->data)
-			return ((void)write(1, "sa\nrra\n", 7));
-		return ((void)write(1, "ra\n", 3));
+			return ((void)write(STDOUT_FILENO, "sa\nrra\n", 7));
+		return ((void)write(STDOUT_FILENO, "ra\n", 3));
 	}
 	if (ptr->data < ptr->next->data && ptr->data < ptr->prev->data)
 	{
 		if (ptr->next->data > ptr->prev->data)
-			return ((void)write(1, "sa\nra\n", 6));
+			return ((void)write(STDOUT_FILENO, "sa\nra\n", 6));
 		return ;
 	}
-	return ((void)write(1, "rra\n", 4));
+	return ((void)write(STDOUT_FILENO, "rra\n", 4));
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
+	t_stack	*stack_a;
 
 	if (argc < 2)
 		return (0);
-	a = ft_atoi(ft_split(ft_blank_input(argv)));
-	if (a == NULL)
-		return (write(STDERR_FILENO, "Error\n", 6), 1);
-	if (a->next == NULL)
-		return (0);
-	if (a->next->status == 2 && a->data > a->next->data)
-		return (write(1, "sa\n", 3), (int)ft_free_list(&a));
-	if (a->next->next->status == 2)
-		return (ft_hardcode_for_3(a), (int)ft_free_list(&a));
-	while (ft_sort_check(a) == 0)
-	{
-		;
-	}
-	return ((int)ft_free_list(&a));
+	stack_a = ft_str_to_list(ft_parse_input(ft_blank_input(argv)));
+	if (stack_a->next == NULL)
+		exit(0);
+	if (stack_a->next->status == 2 && stack_a->data > stack_a->next->data)
+		return (write(STDOUT_FILENO, "sa\n", 3), ft_free_list(stack_a), 0);
+	if (stack_a->next->next->status == 2)
+		return (ft_sort_3_num(stack_a), ft_free_list(stack_a), 0);
+	stack_a = ft_list_to_index(stack_a);
+	ft_radix_sort(&stack_a);
+	return (ft_free_list(stack_a), 0);
 }

@@ -6,46 +6,62 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:51 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/04 09:36:49 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/08 16:34:06 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sort_check(t_stack *a)
+int	ft_sort_check(t_stack *ptr)
 {
-	while (a->status != 2 && a->data < a->next->data)
-		a = a->next;
-	if (a->status == 2 && a->data > a->next->data)
+	if (ptr == NULL)
+		ft_kill_switch(NULL, NULL);
+	while (ptr->status != 2 && ptr->data < ptr->next->data)
+		ptr = ptr->next;
+	if (ptr->status == 2 && ptr->data > ptr->next->data)
 		return (1);
 	return (0);
 }
 
-t_stack	*ft_list_dupe(t_stack *o)
+static t_stack	*ft_node_copy(t_stack *ptr, t_stack *copy, t_stack *temp)
 {
-	t_stack	*c;
-	t_stack	*t;
+	temp->status = ptr->status;
+	temp->data = ptr->data;
+	temp->prev = copy;
+	if (copy != NULL)
+		copy->next = temp;
+	copy = temp;
+	return (copy);
+}
 
-	c = NULL;
-	while (o->status != 2)
+t_stack	*ft_list_dupe(t_stack *ptr)
+{
+	t_stack	*copy;
+	t_stack	*temp;
+
+	copy = NULL;
+	while (ptr->status != 2)
 	{
-		t = malloc(sizeof(t_stack));
-		t->status = o->status;
-		t->data = o->data;
-		t->prev = c;
-		if (c != NULL)
-			c->next = t;
-		c = t;
-		o = o->next;
+		temp = malloc(sizeof(t_stack));
+		if (temp == NULL)
+			ft_kill_switch(ft_free_list(copy), ptr);
+		copy = ft_node_copy(ptr, copy, temp);
+		ptr = ptr->next;
 	}
-	t = malloc(sizeof(t_stack));
-	t->status = o->status;
-	t->data = o->data;
-	t->prev = c;
-	c->next = t;
-	while (c->status != 0)
-		c = c->prev;
-	t->next = c;
-	c->prev = t;
-	return (c);
+	temp = malloc(sizeof(t_stack));
+	if (temp == NULL)
+		ft_kill_switch(ft_free_list(copy), ptr);
+	copy = ft_node_copy(ptr, copy, temp);
+	while (copy->status != 0)
+		copy = copy->prev;
+	temp->next = copy;
+	copy->prev = temp;
+	return (copy);
+}
+
+t_stack	*ft_find_tail(t_stack *s)
+{
+	while (s->status != 2)
+		s = s->next;
+	return (s);
 }
