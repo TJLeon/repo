@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 14:10:46 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/08 15:57:46 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/09 12:32:42 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_node
 {
@@ -34,11 +33,17 @@ char	**ft_parse_input(char **argv);
 t_stack	*ft_list_add_num(t_stack *ptr, long num, char **str);
 t_stack	*ft_list_dupe(t_stack *ptr);
 t_stack	*ft_str_to_list(char **str);
+int		ft_list_len(t_stack *ptr);
 t_stack	*ft_list_to_index(t_stack *ptr);
 int		ft_sort_check(t_stack *ptr);
 t_stack	*ft_find_tail(t_stack *s);
+void	ft_stack_swap(t_stack *stack, char s);
+void	ft_stack_ss(t_stack *stack_a, t_stack *stack_b);
 void	ft_stack_push(t_stack **from, t_stack **to, char s);
 void	ft_stack_rot(t_stack **stack, char s);
+void	ft_stack_rr(t_stack **stack_a, t_stack **stack_b);
+void	ft_stack_rrot(t_stack **stack, char s);
+void	ft_stack_rrr(t_stack **stack_a, t_stack **stack_b);
 void	ft_radix_sort(t_stack **stack_a);
 
 #endif

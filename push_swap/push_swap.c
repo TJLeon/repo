@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:25:15 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/08 17:45:36 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/09 14:13:05 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,53 @@ static char	**ft_blank_input(char **argv)
 	return (argv);
 }
 
-static void	ft_sort_3_num(t_stack *ptr)
+static void	ft_sort_3_num(t_stack **ptr)
 {
-	if (ptr == NULL)
+	if (ptr == NULL || *ptr == NULL)
 		return ;
-	if (ptr->data > ptr->next->data && ptr->data < ptr->prev->data)
-		return ((void)write(STDOUT_FILENO, "sa\n", 3));
-	if (ptr->data > ptr->next->data && ptr->data > ptr->prev->data)
+	if ((*ptr)->data > (*ptr)->next->data && (*ptr)->data < (*ptr)->prev->data)
+		return (ft_stack_swap(*ptr, 'a'));
+	if ((*ptr)->data > (*ptr)->next->data && (*ptr)->data > (*ptr)->prev->data)
 	{
-		if (ptr->next->data > ptr->prev->data)
-			return ((void)write(STDOUT_FILENO, "sa\nrra\n", 7));
-		return ((void)write(STDOUT_FILENO, "ra\n", 3));
+		if ((*ptr)->next->data > (*ptr)->prev->data)
+			return (ft_stack_swap(*ptr, 'a'), ft_stack_rrot(ptr, 'a'));
+		return (ft_stack_rot(ptr, 'a'));
 	}
-	if (ptr->data < ptr->next->data && ptr->data < ptr->prev->data)
+	if ((*ptr)->data < (*ptr)->next->data && (*ptr)->data < (*ptr)->prev->data)
 	{
-		if (ptr->next->data > ptr->prev->data)
-			return ((void)write(STDOUT_FILENO, "sa\nra\n", 6));
+		if ((*ptr)->next->data > (*ptr)->prev->data)
+			return (ft_stack_swap(*ptr, 'a'), ft_stack_rot(ptr, 'a'));
 		return ;
 	}
-	return ((void)write(STDOUT_FILENO, "rra\n", 4));
+	return (ft_stack_rrot(ptr, 'a'));
+}
+
+static void	ft_sort_small(t_stack **s_a)
+{
+	int		len;
+	t_stack	*stack_b;
+
+	len = ft_list_len(*s_a);
+	while (ft_list_len(*s_a) > 3 && ft_sort_check(*s_a) == 0)
+	{
+		if ((*s_a)->data == 0 || (*s_a)->data == len - 1)
+			ft_stack_push(s_a, &stack_b, 'b');
+		else if ((*s_a)->prev->data == 0 || (*s_a)->prev->data == len - 1)
+		{
+			ft_stack_rrot(s_a, 'a');
+			ft_stack_push(s_a, &stack_b, 'b');
+		}
+		else if ((*s_a)->next->data == 0 || (*s_a)->next->data == len - 1)
+		{
+			ft_stack_rot(s_a, 'a');
+			ft_stack_push(s_a, &stack_b, 'b');
+		}
+		else
+			ft_stack_rot(s_a, 'a');
+	}
+	ft_sort_3_num(s_a);
+	while (stack_b != NULL)
+		ft_stack_push(&stack_b, s_a, 'a');
 }
 
 int	main(int argc, char **argv)
@@ -62,10 +90,13 @@ int	main(int argc, char **argv)
 	if (stack_a->next == NULL)
 		exit(0);
 	if (stack_a->next->status == 2 && stack_a->data > stack_a->next->data)
-		return (write(STDOUT_FILENO, "sa\n", 3), ft_free_list(stack_a), 0);
+		return (ft_stack_swap(stack_a, 'a'), ft_free_list(stack_a), 0);
 	if (stack_a->next->next->status == 2)
-		return (ft_sort_3_num(stack_a), ft_free_list(stack_a), 0);
+		return (ft_sort_3_num(&stack_a), ft_free_list(stack_a), 0);
 	stack_a = ft_list_to_index(stack_a);
-	ft_radix_sort(&stack_a);
+	if (ft_list_len(stack_a) <= 5)
+		ft_sort_small(&stack_a);
+	else
+		ft_radix_sort(&stack_a);
 	return (ft_free_list(stack_a), 0);
 }

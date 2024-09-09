@@ -6,27 +6,11 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 22:28:58 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/08 15:53:09 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/09 10:26:49 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_list_len(t_stack *ptr)
-{
-	int	len;
-
-	if (ptr == NULL)
-		ft_kill_switch(NULL, NULL);
-	len = 0;
-	while (ptr->status != 2)
-	{
-		ptr = ptr->next;
-		len++;
-	}
-	len++;
-	return (len);
-}
 
 static int	*ft_list_to_tab(t_stack *ptr)
 {
@@ -53,17 +37,16 @@ static void	ft_sort_int_tab(int *tab, int len)
 	int	index;
 	int	temp;
 
-	index = 0;
-	while (index < len - 1)
+	index = -1;
+	while (++index < len - 1)
 	{
 		if (tab[index] > tab[index + 1])
 		{
 			temp = tab[index];
 			tab[index] = tab[index + 1];
 			tab[index + 1] = temp;
-			index = 0;
+			index = -1;
 		}
-		index++;
 	}
 }
 

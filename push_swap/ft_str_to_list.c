@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:26:00 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/08 17:33:53 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/08 22:34:24 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_stack	*ft_str_to_list(char **str)
 			if (str[i1][i2++] == '-')
 				sign = -1;
 		num = 0;
-		while (str[i1][i2] >= '0' && str[i1][i2] <= '9' && i1 < 11)
+		while (str[i1][i2] >= '0' && str[i1][i2] <= '9' && i2 < 11)
 			num = (num * 10) + (str[i1][i2++] - '0');
 		ft_int_check(ptr, num * sign, str);
 		ptr = ft_list_add_num(ptr, num * sign, str);

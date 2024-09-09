@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 10:46:51 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/08 16:34:06 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/09 10:31:14 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,24 @@ t_stack	*ft_list_dupe(t_stack *ptr)
 	return (copy);
 }
 
-t_stack	*ft_find_tail(t_stack *s)
+t_stack	*ft_find_tail(t_stack *stack)
 {
-	while (s->status != 2)
-		s = s->next;
-	return (s);
+	while (stack->status != 2)
+		stack = stack->next;
+	return (stack);
+}
+
+int	ft_list_len(t_stack *ptr)
+{
+	int	len;
+
+	len = 0;
+	while (ptr != NULL && ptr->status != 2)
+	{
+		ptr = ptr->next;
+		len++;
+	}
+	if (ptr != NULL)
+		len++;
+	return (len);
 }
