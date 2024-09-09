@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:25:15 by leotan            #+#    #+#             */
-/*   Updated: 2024/09/09 14:13:05 by leotan           ###   ########.fr       */
+/*   Updated: 2024/09/09 15:49:51 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	ft_sort_small(t_stack **s_a)
 	t_stack	*stack_b;
 
 	len = ft_list_len(*s_a);
+	stack_b = NULL;
 	while (ft_list_len(*s_a) > 3 && ft_sort_check(*s_a) == 0)
 	{
 		if ((*s_a)->data == 0 || (*s_a)->data == len - 1)
@@ -67,17 +68,16 @@ static void	ft_sort_small(t_stack **s_a)
 			ft_stack_rrot(s_a, 'a');
 			ft_stack_push(s_a, &stack_b, 'b');
 		}
-		else if ((*s_a)->next->data == 0 || (*s_a)->next->data == len - 1)
-		{
-			ft_stack_rot(s_a, 'a');
-			ft_stack_push(s_a, &stack_b, 'b');
-		}
 		else
 			ft_stack_rot(s_a, 'a');
 	}
 	ft_sort_3_num(s_a);
 	while (stack_b != NULL)
+	{
 		ft_stack_push(&stack_b, s_a, 'a');
+		if ((*s_a)->data == len - 1)
+			ft_stack_rot(s_a, 'a');
+	}
 }
 
 int	main(int argc, char **argv)
