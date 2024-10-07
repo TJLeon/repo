@@ -1,0 +1,14 @@
+../ft_bzero.c: OK!
+../ft_calloc.c: OK!
+../ft_list_init.c: OK!
+../ft_list_to_index.c: OK!
+../ft_list_utils.c: OK!
+../ft_parse_input.c: OK!
+../ft_radix_sort.c: OK!
+../ft_stack_push.c: OK!
+../ft_stack_rot.c: OK!
+../ft_stack_swap.c: OK!
+../ft_str_to_list.c: OK!
+../push_swap.c: OK!
+../push_swap.h: OK!
+../push_swap_utils.c: OK!

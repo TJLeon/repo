@@ -1,0 +1,28 @@
+The difference between Fixed& operator and Fixed operator in C++ lies in their return types and how they handle the object being operated on.
+
+Fixed& operator:
+When a binary operator overload (such as +, -, *, /, etc.) or a unary operator overload (such as ++, --) is defined with a return type of Fixed&, it typically indicates that the operator modifies the current object and returns a reference to the modified object. This allows for chaining of operations.
+
+Fixed& operator+=(const Fixed& other) {
+    // Implementation of the addition assignment operator
+    // Modify the current object by adding 'other'
+    return *this; // Return a reference to the modified object
+}ãsdasdasd
+
+
+In this example, the += operator is overloaded as a member function with a return type of Fixed&. It modifies the current object by adding another object (other), and then it returns a reference to the modified object. This allows you to chain multiple addition assignments like a += b += c;.
+
+Fixed operator:
+When a binary operator overload or a unary operator overload is defined with a return type of Fixed (without the reference), it typically indicates that the operator creates a new object that represents the result of the operation, leaving the original objects unchanged.
+
+Fixed operator+(const Fixed& other) const {
+    // Implementation of the addition operator
+    // Create a new object representing the sum of the current object and 'other'
+    return result; // Return the newly created object by value
+}
+
+In this example, the + operator is overloaded as a member function with a return type of Fixed. It creates a new object (result) that represents the sum of the current object and another object (other). The original objects (*this and other) remain unchanged, and the overloaded operator returns the new object by value.
+
+Similarly, unary operators like the pre-increment (++) or post-increment (++) can also be overloaded with a return type of Fixed, indicating that they create and return a new object representing the incremented value while leaving the original object unchanged.
+
+Both Fixed& operator and Fixed operator overloads have their use cases depending on the desired behavior of the operator and how you want to handle the modification of objects. The choice between them depends on the specific requirements and design of your class.
