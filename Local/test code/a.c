@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/01/01 00:00:00 by                   #+#    #+#             */
-/*   Updated: 2024/10/06 21:50:13 by leotan           ###   ########.fr       */
+/*   Updated: 2024/10/10 16:27:36 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void ft_sighandler(int sig)
 {
-	printf("CTRL-C\n");
+	// printf("CTRL-C\n");
 }
 
 void ft_test()
