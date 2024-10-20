@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a.c                                                :+:      :+:    :+:   */
+/*   																																											        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/01/01 00:00:00 by                   #+#    #+#             */
-/*   Updated: 2024/10/10 16:27:36 by leotan           ###   ########.fr       */
+/*   Updated: 2024/10/15 16:42:06 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,51 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-void ft_sighandler(int sig)
-{
-	// printf("CTRL-C\n");
-}
+// void ft_test(const char *p1)
+// {
+// 	(void)p1;
+// }
 
-void ft_test()
-{
-	signal(SIGINT, &ft_sighandler);
-}
+// int main()
+// {
+// 	char *p1=calloc(2,1);
+// 	p1[0]='7';
+// 	ft_test(p1);
+// }
 
-int main()
-{
-	char	*p;
-	ft_test();
-	while (1)
-	{
-		p = readline("minishell$ ");
-		if (p == NULL)
-		{
-			printf("\n");
-			exit(0);
-		}
-		if (p[0] != '\0')
-			printf("%s\n",p);
-		free(p);
-	}
-}
+// int main(int c, char **v, char **ev)
+// {
+// 	for(int i = 0; ev[i]; i++)
+// 		printf("%s\n",ev[i]);
+// }
+
+// void ft_sighandler(int sig)
+// {
+// 	// printf("CTRL-C\n");
+// }
+
+// void ft_test()
+// {
+// 	signal(SIGINT, &ft_sighandler);
+// }
+
+// int main()
+// {
+// 	char	*p;
+// 	ft_test();
+// 	while (1)
+// 	{
+// 		p = readline("minishell$ ");
+// 		if (p == NULL)
+// 		{
+// 			printf("\n");
+// 			exit(0);
+// 		}
+// 		if (p[0] != '\0')
+// 			printf("%s\n",p);
+// 		free(p);
+// 	}
+// }
 
 // int main()
 // {
