@@ -6,7 +6,7 @@
 /*   By: leotan <leotan@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/01/01 00:00:00 by                   #+#    #+#             */
-/*   Updated: 2024/10/15 16:42:06 by leotan           ###   ########.fr       */
+/*   Updated: 2024/10/31 18:27:28 by leotan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,35 @@
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+
+// int main()
+// {
+	// printf("\n");
+	// write(1,"\n",1);
+// }
+
+// int main()
+// {
+// 	char *p = calloc(3,1);
+// 	p[0] = '4';
+// 	p[1] = '2';
+// 	printf("%p\n%p\n%p\n",&p[0],&p[1],&p[2]);
+// }
+
+// void ft_ft()
+// {
+// 	ft_ft();
+// }
+
+// int main()
+// {
+// 	ft_ft();
+// }
+
+// int main()
+// {
+// 	printf("%ld\n",1L);
+// }
 
 // void ft_test(const char *p1)
 // {
